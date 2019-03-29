@@ -34,7 +34,7 @@ function createResponseScprit(code , res) {
     var writeScript = 'exports.getResponse = function () {\n'
     writeScript = writeScript + code
     writeScript = writeScript + "}"
-    let filePath = process.cwd() + "/skillscript/blocklyalexa/lambda/custom/blockly-response.js"
+    let filePath = process.cwd() + "/blocklyalexa/lambda/custom/blockly-response.js"
 
     fs.writeFile(filePath , writeScript , (err , data) => {
         if (err) {

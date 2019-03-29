@@ -1,0 +1,33 @@
+{
+  "interactionModel": {
+      "languageModel": {
+          "invocationName": "ジョルダン",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": [
+                    "キャンセル"
+                  ]
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": [
+                    "ヘルプ"
+                  ]
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": [
+                    "ストップ"
+                  ]
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": [
+                  ]
+              }
+          ],
+          "types": []
+      }
+  }
+}
