@@ -15,15 +15,15 @@ app.use(express.static('public'))
 
 //Server start-up
 var server = app.listen(SERVER_PORT_NO , function() {
-	let port = server.address().port;
-	console.log('Example app listening at %s', port);
+    let port = server.address().port;
+    console.log('Example app listening at %s', port);
 })
 
 // GetRequest
 app.get('/setscript' , function (req , res){
-	res.json({
-		status:-1
-	})
+    res.json({
+        status:-1
+    })
 })
 
 // PostRequest
@@ -33,6 +33,7 @@ app.post('/setscript' , function (req , res){
         status:-2
     })
     }else{
+        isUploading = true
         createResponseScprit(req.body.code , res)
     }
 })
@@ -53,6 +54,7 @@ function createResponseScprit(code , res) {
             var exec = childProcess.exec
             exec('sh skill-deploy.sh' , function (err , stdout , stderr) {
                 console.log(stdout)
+                isUploading = false
                 res.json({
                     status:0
                 })
