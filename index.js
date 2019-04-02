@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 
 const SERVER_PORT_NO = 3000
 
+var isUploading = false
+
 var app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -26,7 +28,13 @@ app.get('/setscript' , function (req , res){
 
 // PostRequest
 app.post('/setscript' , function (req , res){
-    createResponseScprit(req.body.code , res)
+    if (isUploading) {
+        res.json({
+        status:-2
+    })
+    }else{
+        createResponseScprit(req.body.code , res)
+    }
 })
 
 //CreateSkillScript
