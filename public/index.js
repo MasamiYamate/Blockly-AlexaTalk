@@ -9,7 +9,7 @@ const workspace = Blockly.inject(
 )
 
 function uploadScript() {
-  document.getElementById('uploadScript').style.display = "none"
+  document.getElementById('uploadstatus').textContent = "Uploading...."
   let uploadCode = Blockly.JavaScript.workspaceToCode(workspace)
   let sendData = {'code':uploadCode}
   let sendJson = JSON.stringify(sendData)
@@ -18,7 +18,7 @@ function uploadScript() {
   xhr.setRequestHeader("Content-Type", "application/json")
   xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      document.getElementById('uploadScript').style.display = "block"
+      document.getElementById('uploadstatus').textContent = "Success!!!!"
       console.log('fix')
     }
   }

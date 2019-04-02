@@ -2,14 +2,53 @@
 <html>
 
 <head>
-  <title>Getting started with Blockly</title>
+  <title>Blockly-AlexaTalk</title>
+  <style type="text/css">
+    body {
+      margin: 0px;
+    }
+
+
+    #blocklyDiv {
+      height: 95vh;
+      width: 100vw;
+    }
+
+    #buttonArea {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: flex;
+    }
+
+    .actButton {
+        display: flex;
+        flex-direction: column;
+        -webkit-align-items: center;
+        -webkit-justify-content: center; 
+        align-items: center; /*上下中央*/
+        justify-content: center; /*左右中央*/
+        border: 2px solid gray;
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 10px;
+        width: 200px;
+        height: 44px;
+        margin-left: 20px;
+        margin-right: 20px;
+        box-shadow: 0px 0px 4px gray;
+    }
+
+    .actButton > p {
+      user-select: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="blocklyDiv" style="height: 95vh; width: 100vw;"></div>
   <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-    <category name="変数" colour="#ff9c00" custom="VARIABLE"></category>
-    <category name="分岐" colour="#ffd828">
+    <category name="変数" colour="#b24f7e" custom="VARIABLE"></category>
+    <category name="分岐" colour="#547ea7">
       <block type="controls_if"></block>
       <block type="logic_compare">
         <field name="OP">EQ</field>
@@ -24,7 +63,7 @@
       <block type="logic_null"></block>
       <block type="logic_ternary"></block>
     </category>
-    <category name="反復" colour="#60caaa">
+    <category name="反復" colour="#2aaD5c">
       <block type="controls_repeat_ext">
         <value name="TIMES">
           <shadow type="math_number">
@@ -60,7 +99,7 @@
         <field name="FLOW">BREAK</field>
       </block>
     </category>
-    <category name="文字" colour="#fff2bf">
+    <category name="文字" colour="#33aa8e">
       <block type="text">
         <field name="TEXT"></field>
       </block>
@@ -138,7 +177,46 @@
         </value>
       </block>
     </category>
-    <category name="発話" colour="#ef8fb8">
+    <category name="数値" colour="#5e61a7">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+      <block type="math_arithmetic">
+        <field name="OP">ADD</field>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <field name="OP">ROUND</field>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category name="発話" colour="#33aa8e">
       <block type="text_speek">
         <field name="CASE">UPPERCASE</field>
         <value name="TEXT">
@@ -150,7 +228,13 @@
     </category>
   </xml>
 
-  <button id="uploadScript">スキルにスクリプトを反映する</button>
+  <div id="blocklyDiv"></div>
+  <div id="buttonArea">
+      <div class='actButton' id='uploadScript'>
+          <p>Lambdaへアップロード</p>
+      </div>
+      <p id='uploadstatus'></p>
+  </div>
 
   <script src="blockly/acorn_interpreter.js"></script>
   <script src="blockly/blockly_compressed.js"></script>
