@@ -1,7 +1,7 @@
 Blockly.Blocks.text_speek = {
   init() {
     this.jsonInit({
-      "message0": '%1です',
+      "message0": '%1',
       "args0": [
         {
           "type": "input_value",
